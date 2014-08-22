@@ -1,0 +1,41 @@
+extends ../shared/template
+block content
+  h2 New Trip
+  .row
+    .col-xs-6
+      form(role='form', method='post', action='/trips', enctype='multipart/form-data')
+        input#latA(type='hidden', name='latA')
+        input#lngA(type='hidden', name='lngA')
+        input#latB(type='hidden', name='latB')
+        input#lngB(type='hidden', name='lngB')
+        .form-group
+          label(for='name') Name
+          input.form-control#name(type='text', name='name', autofocus=true)
+        .form-group
+          label(for='cash') Cash
+          input.form-control#cash(type='number', name='cash')
+        .form-group
+          label(for='begin') Begining Location
+          input.form-control#begin(type='text', name='begin')
+        .form-group
+          label(for='end') Ending Location
+          input.form-control#begin(type='text', name='end')
+        .form-group
+          label(for='photo') Car Photo
+          input.form-control#photo(type='file', name='photo', multiple=true)
+        .form-group
+          label(for='mpg') MPG
+          input.form-control#mpg(type='number', name='mpg')
+        .form-group
+          label(for='from') From
+          input.form-control#from(type='date', name='from')
+        .form-group
+          label(for='to') To
+          input.form-control#to(type='date', name='to')
+        .form-group
+          label(for='cost') Gas Cost
+          input.form-control#cost(type='number', step='any', name='cost')
+        button.btn.btn-primary(type='submit') Add Trip
+
+block scripts
+  script(src='/js/user/new.js')
