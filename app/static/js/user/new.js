@@ -8,23 +8,21 @@
   });
 
   function addTrip(e){
-    var begin = $('#begin').val();
-    geocode(begin, function(name, lat, lng){
-      $('#begin').val(name);
-      $('#latA').val(lat);
-      $('#lngA').val(lng);
+    var begin = $('#begin').val(),
+        end   = $('#end').val();
+    geocode(begin, function(begin, latA, lngA){
+      geocode(end, function(end, latB, lngB){
+        $('#begin').val(begin);
+        $('#latA').val(latA);
+        $('#lngA').val(lngA);
+        $('#end').val(end);
+        $('#latB').val(latB);
+        $('#lngB').val(lngB);
 
-      $('form').submit();
+        $('form').submit();
+      });
     });
 
-    var end = $('#end').val();
-    geocode(end, function(name, lat, lng){
-      $('#end').val(name);
-      $('#latB').val(lat);
-      $('#lngB').val(lng);
-
-      $('form').submit();
-    });
     e.preventDefault();
   }
 })();
